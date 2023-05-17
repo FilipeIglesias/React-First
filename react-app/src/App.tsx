@@ -1,11 +1,14 @@
-import Message from "./Message";
+import { useState } from "react";
+import Alert from "./components/Alert";
+import { Button } from "./components/Button";
 
 function App() {
-
-  const name ='Filipe';
-  if (name)
-    return <h1>Hello {name}</h1>;
-  return <h1>Hello World</h1>;
+  const [alertVisible, setAlertVisibility] = useState(false)
+  return <div>
+    <Button color="secondary" onClick={() => setAlertVisibility(false)}>Hide</Button>
+    <Button onClick={() => setAlertVisibility(true)}>Show</Button>
+    {alertVisible &&<Alert onClose={() => setAlertVisibility(false)}>Lel</Alert>}
+  </div>;
 }
 
 export default App;
